@@ -17,16 +17,16 @@ import com.sam_chordas.android.stockhawk.ui.MyStocksActivity;
  * Created by albertlardizabal on 1/6/17.
  */
 
-public class WidgetProvider extends AppWidgetProvider {
+public class StockWidgetProvider extends AppWidgetProvider {
 
-    public static String TAG = WidgetProvider.class.getSimpleName();
+    public static String TAG = StockWidgetProvider.class.getSimpleName();
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 
         for (int widgetId : appWidgetIds) {
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
-                    R.layout.widget_listview_layout);
+                    R.layout.stock_widget_listview_layout);
 
             Intent intent = new Intent(context, MyStocksActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
@@ -47,10 +47,10 @@ public class WidgetProvider extends AppWidgetProvider {
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
                 views.setRemoteAdapter(R.id.widget_list,
-                        new Intent(context, WidgetRemoteViewsService.class));
+                        new Intent(context, StockWidgetRemoteViewsService.class));
             } else {
                 views.setRemoteAdapter(0, R.id.widget_list,
-                        new Intent(context, WidgetRemoteViewsService.class));
+                        new Intent(context, StockWidgetRemoteViewsService.class));
             }
         } catch(Exception e) {
             Log.e(TAG, e.getMessage());

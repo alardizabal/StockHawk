@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="3dp"
         android:gravity="start|center_vertical"
-        tools:text="GOOG" />
+        tools:text="@string/input_hint" />
     <TextView
         android:id="@+id/change"
         style="@style/PercentChangeTextStyle"

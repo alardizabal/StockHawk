@@ -16,7 +16,7 @@ import com.sam_chordas.android.stockhawk.rest.Utils;
  * Created by albertlardizabal on 1/6/17.
  */
 
-public class WidgetRemoteViewsService extends RemoteViewsService {
+public class StockWidgetRemoteViewsService extends RemoteViewsService {
 
     @Override
     public RemoteViewsFactory onGetViewFactory(Intent intent) {
@@ -72,7 +72,7 @@ public class WidgetRemoteViewsService extends RemoteViewsService {
                     return null;
 
                 RemoteViews views = new RemoteViews(getPackageName(),
-                        R.layout.widget_listview_item);
+                        R.layout.stock_widget_listview_item);
 
                 views.setTextViewText(R.id.stock_symbol, data.getString(data.getColumnIndex
                         (getResources().getString(R.string.symbol))));
