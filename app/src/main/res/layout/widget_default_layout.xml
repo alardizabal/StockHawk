@@ -27,6 +27,8 @@
             android:layout_height="wrap_content"
             android:paddingRight="10dp"
             android:paddingEnd="10dp"
+            android:paddingLeft="0dp"
+            android:paddingStart="0dp"
             tools:text="1000.00" />
         <TextView
             android:id="@+id/change"

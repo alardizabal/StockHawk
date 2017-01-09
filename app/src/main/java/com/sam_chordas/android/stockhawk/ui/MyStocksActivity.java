@@ -6,6 +6,7 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -36,6 +37,8 @@ import com.sam_chordas.android.stockhawk.rest.Utils;
 import com.sam_chordas.android.stockhawk.service.StockIntentService;
 import com.sam_chordas.android.stockhawk.service.StockTaskService;
 import com.sam_chordas.android.stockhawk.touch_helper.SimpleItemTouchHelperCallback;
+
+import static com.sam_chordas.android.stockhawk.R.string.network_toast;
 
 public class MyStocksActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
 
@@ -102,6 +105,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
             @Override public void onClick(View v) {
                 if (isConnected){
                     new MaterialDialog.Builder(mContext).title(R.string.symbol_search)
+                            .backgroundColor(Color.DKGRAY)
                             .content(R.string.content_test)
                             .inputType(InputType.TYPE_CLASS_TEXT)
                             .input(R.string.input_hint, R.string.input_prefill, new MaterialDialog.InputCallback() {
@@ -112,8 +116,9 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                                             new String[] { QuoteColumns.SYMBOL }, QuoteColumns.SYMBOL + "= ?",
                                             new String[] { input.toString() }, null);
                                     if (c.getCount() != 0) {
+                                        String savedText = getResources().getString(R.string.stock_already_saved);
                                         Toast toast =
-                                                Toast.makeText(MyStocksActivity.this, "This stock is already saved!",
+                                                Toast.makeText(MyStocksActivity.this, savedText,
                                                         Toast.LENGTH_LONG);
                                         toast.setGravity(Gravity.CENTER, Gravity.CENTER, 0);
                                         toast.show();
@@ -168,7 +173,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     }
 
     public void networkToast(){
-        Toast.makeText(mContext, getString(R.string.network_toast), Toast.LENGTH_SHORT).show();
+        Toast.makeText(mContext, getString(network_toast), Toast.LENGTH_SHORT).show();
     }
 
     public void restoreActionBar() {
