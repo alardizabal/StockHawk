@@ -24,8 +24,7 @@ public class WidgetProvider extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 
-        for (int widgetId : appWidgetIds)
-        {
+        for (int widgetId : appWidgetIds) {
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
                     R.layout.widget_listview_layout);
 
@@ -45,20 +44,15 @@ public class WidgetProvider extends AppWidgetProvider {
 
     private void setRemoteAdapter(Context context, final RemoteViews views) {
 
-        try
-        {
+        try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
                 views.setRemoteAdapter(R.id.widget_list,
                         new Intent(context, WidgetRemoteViewsService.class));
-            }
-            else
-            {
+            } else {
                 views.setRemoteAdapter(0, R.id.widget_list,
                         new Intent(context, WidgetRemoteViewsService.class));
             }
-        }
-        catch(Exception e)
-        {
+        } catch(Exception e) {
             Log.e(TAG, e.getMessage());
             e.printStackTrace();
         }

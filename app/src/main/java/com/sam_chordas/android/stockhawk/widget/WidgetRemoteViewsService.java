@@ -107,12 +107,10 @@ public class WidgetRemoteViewsService extends RemoteViewsService {
             @Override
             public long getItemId(int position) {
 
-                if (data != null && data.moveToPosition(position))
-                {
+                if (data != null && data.moveToPosition(position)) {
                     final int QUOTES_ID_COL = 0;
                     return data.getLong(QUOTES_ID_COL);
                 }
-
                 return position;
             }
 
