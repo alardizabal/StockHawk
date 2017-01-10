@@ -12,7 +12,7 @@
     <string name="network_toast">No internet connection! Stock quotes may be old.</string>
     <string name="ticker_not_found">Ticker %1$s not found</string>
 
-    <string name="widget_title">Stocks</string>
+    <string name="widget_title">Stock Hawk</string>
     <string name="symbol">symbol</string>
     <string name="stock_already_saved">"This stock is already saved!"</string>
 
