@@ -5,7 +5,6 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -45,13 +44,8 @@ public class StockWidgetProvider extends AppWidgetProvider {
     private void setRemoteAdapter(Context context, final RemoteViews views) {
 
         try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-                views.setRemoteAdapter(R.id.widget_list,
-                        new Intent(context, StockWidgetRemoteViewsService.class));
-            } else {
-                views.setRemoteAdapter(0, R.id.widget_list,
-                        new Intent(context, StockWidgetRemoteViewsService.class));
-            }
+            views.setRemoteAdapter(R.id.widget_list,
+                    new Intent(context, StockWidgetRemoteViewsService.class));
         } catch(Exception e) {
             Log.e(TAG, e.getMessage());
             e.printStackTrace();

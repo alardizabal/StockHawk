@@ -86,10 +86,10 @@ public class StockWidgetRemoteViewsService extends RemoteViewsService {
                         data.getString(data.getColumnIndex(Utils.showPercent ?
                                 QuoteColumns.PERCENT_CHANGE : QuoteColumns.CHANGE)));
 
-                final Intent fillInIntent = new Intent();
-                fillInIntent.putExtra(getResources().getString(R.string.symbol),
+                final Intent intent = new Intent();
+                intent.putExtra(getResources().getString(R.string.symbol),
                         data.getString(data.getColumnIndex(QuoteColumns.SYMBOL)));
-                views.setOnClickFillInIntent(R.id.widget_list_item, fillInIntent);
+                views.setOnClickFillInIntent(R.id.widget_list_item, intent);
 
                 return views;
             }
